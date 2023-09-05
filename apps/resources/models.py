@@ -49,11 +49,24 @@ class Resources(CreatedModifiedDateTimeBase):
     def user_title(self):
         return self.user_id.title
 
+    def all_tags(self):
+        return ", ".join([tag.name for tag in self.tags.all()])
+
 
 class ResourcesTag(CreatedModifiedDateTimeBase):
     modified_at = None
     resources_id = models.ForeignKey("resources.Resources", on_delete=models.CASCADE)
     tag_id = models.ForeignKey("resources.Tag", on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                "resources_id",
+                "tag_id",
+                name="resource_tag_unique",
+                violation_error_message="Tag already exist for resource",
+            )
+        ]
 
 
 class Review(CreatedModifiedDateTimeBase):
