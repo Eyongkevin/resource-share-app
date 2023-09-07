@@ -1,15 +1,14 @@
-{% load custom_filter %}
-<!DOCTYPE html>
+{% extends 'base.html' %}
+<!---->
+{% block title %}{{block.super}} - Users{% endblock title %}
+<!---->
+{% block content %}
+<span>We are proud of our {{ users|length }} users</span>
 
-<html>
-   <body>
-      <div>
-         <span>We are proud of our {{ users|length }} users</span>
+<ul>
+  {% for user in users %}
 
-         <ul>
-            {% for user in users %}
-            <li>{{ user.username|cap_all_but_upper_first }}</li>
-            {% endfor %}
-         </ul>
-   </body>
-</html>
+  <li>{% include 'includes/style_active_user.html' %}</li>
+  {% endfor %}
+</ul>
+{% endblock content %}
