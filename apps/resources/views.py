@@ -21,10 +21,10 @@ def home_page(request):
         "res_per_cat": res_per_cat,
     }
     return render(
-       request=request, 
-       template_name="resources/home.html", 
-       context=context,
-      )
+        request=request,
+        template_name="resources/home.html",
+        context=context,
+    )
 
 
 def home_page_old(request):
@@ -69,6 +69,13 @@ def resource_detail(request, id):
       </html>
    """
     return HttpResponse(response)
+
+
+def resource_post(request):
+    return render(
+        request,
+        "resources/post.html",
+    )
 
 
 class HomePage(TemplateView):

@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %}
+<!---->
+{% block title %}{{ block.super}} - Post {% endblock title %}
+<!---->
+{% block stylesheet %} {{ block.super}}
+<link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}" />
+{% endblock stylesheet %}
+<!---->
+{% block content %}
+<h1>Share your Resource</h1>
+<div class="resource-form">
+  <form method="post" action="{% url 'resource-post' %}">
+    {% csrf_token %}
+    <div class="form-element">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        name="title"
+        value=""
+        placeholder="Enter Title"
+      />
+    </div>
+    <div class="form-element">
+      <label for="link">Link</label>
+      <input
+        id="link"
+        type="url"
+        name="link"
+        value=""
+        placeholder="Enter URL"
+      />
+    </div>
+    <div class="form-element">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        value=""
+        placeholder="Enter Description"
+        cols="50"
+        rows="30"
+      ></textarea>
+    </div>
+    <input type="submit" value="Submit" />
+  </form>
+</div>
+{% endblock content %}
