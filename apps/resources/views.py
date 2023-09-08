@@ -6,6 +6,7 @@ from django.db.models import Count
 from .models import Resources
 from apps.user.models import User
 from .utils import generate_cat_count_list
+from .form import PostResourceForm
 
 # Create your views here.
 
@@ -72,10 +73,26 @@ def resource_detail(request, id):
 
 
 def resource_post(request):
-    return render(
-        request,
-        "resources/post.html",
-    )
+    # Unbound, # user made a GET request
+    if request.method == "GET":
+        form = PostResourceForm()
+        return render(
+            request,
+            "resources/resource_post.html",
+            {"form": form},
+        )
+    else:
+        # Bound # user made a POST request
+        form = PostResourceForm(request.POST)
+
+        # validation
+        # .is_valid() method
+        # .cleaned_data attribute
+        if form.is_valid():
+            data = form.cleaned_data
+            # TODO: manually add a user id
+            # TODO: Save it to the database
+            # TODO: Redirect the user to the home page
 
 
 class HomePage(TemplateView):
