@@ -10,3 +10,6 @@ class User(AbstractUser):
         max_length=100, null=True, blank=True, help_text="Your profession"
     )
     bio = models.TextField(default="")
+
+    class Meta:
+        ordering = ["username"]
