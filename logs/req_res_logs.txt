@@ -1,0 +1,23 @@
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/resource/1 | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] GET | 127.0.0.1:8000/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.038165 >> GET | 127.0.0.1:8000/
+[info] EXECUTION TIME 0:00:00.038463 >> GET | 127.0.0.1:8000/
+[info] GET | 127.0.0.1:8000/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.037742 >> GET | 127.0.0.1:8000/
+[info] EXECUTION TIME 0:00:00.038178 >> GET | 127.0.0.1:8000/
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.118993 >> GET | 127.0.0.1:8000/resource/post/
+[info] EXECUTION TIME 0:00:00.119533 >> GET | 127.0.0.1:8000/resource/post/
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.058165 >> GET | 127.0.0.1:8000/resource/post/
+[info] GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.027988 >> GET | 127.0.0.1:8000/resource/post/
+[info] GET | 127.0.0.1:8000/resource/2 | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.044587 >> GET | 127.0.0.1:8000/resource/2
+[info] GET | 127.0.0.1:8000/resource/2 | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+[info] EXECUTION TIME 0:00:00.038713 >> GET | 127.0.0.1:8000/resource/2
