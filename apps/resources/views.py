@@ -83,7 +83,9 @@ def resource_post(request):
         )
     else:
         # Bound # user made a POST request
-        form = PostResourceForm(request.POST)
+        info = {"title": "kevin", "link": "http:hello", "description": "hello"}
+        # form = PostResourceForm(request.POST)
+        form = PostResourceForm(info)
 
         # validation
         # .is_valid() method
@@ -93,6 +95,8 @@ def resource_post(request):
             # TODO: manually add a user id
             # TODO: Save it to the database
             # TODO: Redirect the user to the home page
+        else:
+            pass
 
 
 class HomePage(TemplateView):
