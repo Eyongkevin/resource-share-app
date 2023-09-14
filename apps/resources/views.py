@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.db.models import Count
-
+from django.contrib.auth.decorators import login_required
 from .models import Resources
 from apps.user.models import User
 from .utils import generate_cat_count_list
@@ -52,12 +52,31 @@ def home_page_old(request):
     return HttpResponse(response)
 
 
+@login_required
 def resource_detail(request, id):
+    max_viewed_resources = 5
+
+    viewed_resources = request.session.get("viewed_resources", [])
     res = (
         Resources.objects.select_related("user_id", "cat_id")
         .prefetch_related("tags")
         .get(pk=id)
     )
+    # prepare our data
+    viewed_resource = [id, res.title]
+
+    # Check if that data exist already and remove it
+    if viewed_resource in viewed_resources:
+        viewed_resources.remove(viewed_resource)
+
+    # Add it as first item
+    viewed_resources.insert(0, viewed_resource)
+
+    # Get limit
+    viewed_resources = viewed_resources[:max_viewed_resources]
+
+    # Add it back in the session
+    request.session["viewed_resources"] = viewed_resources
 
     response = f"""
       <html>
@@ -72,6 +91,7 @@ def resource_detail(request, id):
     return HttpResponse(response)
 
 
+@login_required
 def resource_post(request):
     # Unbound, # user made a GET request
     if request.method == "GET":

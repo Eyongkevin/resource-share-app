@@ -95,3 +95,9 @@ STATICFILES_DIRS = [str(BASE_DIR / "static")]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "user.User"
+
+# what storage medium to use
+# SESSION_ENGINE = "django.contrib.sessions.backends.db"
+
+# Redirect the user to this url if user is not authenticated
+LOGIN_URL = "login-view"  # Best practice
