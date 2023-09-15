@@ -148,3 +148,8 @@
 [info] EXECUTION TIME 0:00:00.037462 >> GET | 127.0.0.1:8000/
 [info] GET | 127.0.0.1:8000/user/profile/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
 [info] EXECUTION TIME 0:00:00.023109 >> GET | 127.0.0.1:8000/user/profile/
+GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+INFO 2023-09-15 09:16:27,339 log :: GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+INFO 2023-09-15 09:44:10,954 log :: GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15
+INFO 2023-09-15 09:44:41,673 log :: GET | 127.0.0.1:8000/resource/post/ | text/plain | Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6.1 Safari/605.1.15

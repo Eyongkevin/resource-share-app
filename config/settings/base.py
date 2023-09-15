@@ -30,9 +30,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "apps.core.middleware.logging.simple_logging_middleware",
+    "apps.core.middleware.log.simple_logging_middleware",
     # replace with ViewExecutionTime2Middleware
-    "apps.core.middleware.logging.ViewExecutionTime2Middleware",
+    # "apps.core.middleware.logging.ViewExecutionTime2Middleware",
 ]
 ROOT_URLCONF = "config.urls"
 
@@ -101,3 +101,42 @@ AUTH_USER_MODEL = "user.User"
 
 # Redirect the user to this url if user is not authenticated
 LOGIN_URL = "login-view"  # Best practice
+
+# Logger configuration
+LOGGING = {
+    "version": 1,  # dictConfig format version
+    "loggers": {  # Receiver or entry point to the logging system
+        "logging_mw": {  # specify the logger instance
+            # decide which handler to handle it
+            "handlers": ["file", "console"],  # the 'file' handler will handle.
+            "level": "DEBUG",  # This will accept all log levels
+        }
+    },
+    "handlers": {
+        "console": {  # the name of the handler
+            "level": "DEBUG",  # handle this logging level and any other above it
+            "class": "logging.StreamHandler",  # this defines the medium to send the log messages
+            "filters": ["only_if_debug_true"],  # Handle only if DEBUG=True
+        },
+        "file": {  # the name of the handler
+            "level": "INFO",  # handle this logging level and any other above it
+            # TODO: Search for more class options
+            "class": "logging.FileHandler",  # this defines the medium to send the log messages
+            "filename": str(BASE_DIR / "logs" / "req_res_logs.txt"),
+            "formatter": "verbose",
+        },
+    },
+    "formatters": {
+        "verbose": {  # the name of the formatter
+            # TODO: Search for more format log variables from the official doc
+            "format": "{levelname} {asctime} {module} :: {message}",
+            "style": "{",  # I want to use curly braces to access attributes
+        }
+    },
+    "filters": {
+        "only_if_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+        # TODO: Call your own custom function to handle the filtering.
+    },
+}
