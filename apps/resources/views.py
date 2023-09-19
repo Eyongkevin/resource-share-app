@@ -103,9 +103,9 @@ def resource_post(request):
         )
     else:
         # Bound # user made a POST request
-        info = {"title": "kevin", "link": "http:hello", "description": "hello"}
-        # form = PostResourceForm(request.POST)
-        form = PostResourceForm(info)
+        # info = {"title": "kevin", "link": "http:hello", "description": "hello"}
+        form = PostResourceForm(request.POST)
+        # form = PostResourceForm(info)
 
         # validation
         # .is_valid() method

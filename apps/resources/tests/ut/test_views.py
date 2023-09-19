@@ -103,3 +103,6 @@ class TestResourcesView(TestCase):
         )
         # check if the status code of response is 302
         self.assertEqual(response.status_code, 200)
+
+
+# TODO: Test the User view

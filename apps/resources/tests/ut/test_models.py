@@ -17,3 +17,5 @@ class TestTagModel(TestCase):
     def test_dunder_str(self):
         # str(self.tag) or self.tag.__str__()
         self.assertEqual(str(self.tag), self.tag_name)
+
+    # TODO: Test all models
