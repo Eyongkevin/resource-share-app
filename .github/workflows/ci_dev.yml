@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest # The OS to build your project on
     strategy:
       fail-fast: false
+      max-parallel: 4
       matrix:
         python-version: ["3.11"] # Python version to build the applciation
 
@@ -38,10 +39,10 @@ jobs:
           POSTGRES_DB: ${{ env.DB_NAME }}
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-retries 4
+        # options: >-
+        #   --health-cmd pg_isready
+        #   --health-interval 10s
+        #   --health-retries 4
 
     steps: # Actions
       - uses: actions/checkout@v3 # pre-build in Github
