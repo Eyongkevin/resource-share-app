@@ -19,6 +19,16 @@ jobs:
       matrix:
         python-version: ["3.11"] # Python version to build the applciation
 
+    env: # environment variables.
+      # Use `secrets` to access secrets from  settings
+      # Use `vars` to access variables from settings
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PWD: ${{ secrets.DB_PWD }}
+      DB_NAME: ${{ vars.DB_NAME }}
+      DB_HOST: ${{ vars.DB_HOST }}
+      DB_PORT: ${{ vars.DB_PORT }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+
     steps: # Actions
       - uses: actions/checkout@v3 # pre-build in Github
       - name: Set up Python ${{ matrix.python-version }}
