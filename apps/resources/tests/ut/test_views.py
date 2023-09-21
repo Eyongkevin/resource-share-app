@@ -102,7 +102,7 @@ class TestResourcesView(TestCase):
             HTTP_CONTENT_TYPE="text/plain",  # set content type
         )
         # check if the status code of response is 302
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 300)
 
 
 # TODO: Test the User view
