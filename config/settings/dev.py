@@ -19,6 +19,6 @@ DATABASES = {
         "USER": env.str("DB_USER"),
         "PASSWORD": env.str("DB_PWD"),
         "HOST": env.str("DB_HOST"),
-        "PORT": env.str("DB_PORT"),
+        "PORT": 5432,
     }
 }
