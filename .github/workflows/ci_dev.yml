@@ -29,7 +29,7 @@ jobs:
       DB_PORT: ${{ vars.DB_PORT }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
 
-    services:
+    services: # If you had database connection issues
       postgres_main:
         image: postgres:15
         env:
@@ -40,7 +40,7 @@ jobs:
           - 5432:5432
         options: >-
           --health-cmd pg_isready
-          --health-interval 
+          --health-interval 10s
           --health-retries 4
 
     steps: # Actions
