@@ -4,7 +4,7 @@ import environ
 env = environ.Env()
 environ.Env.read_env(str(BASE_DIR / ".env"))
 
-SECRET_KEY = django-insecure-5fyJF16SHIub_Q_3UInrLYb8aH_8_6A_caIXA0u7r1oiwiHgXF7BmpoQOsNQLz3UIpc
+SECRET_KEY = 'django-insecure-5fyJF16SHIub_Q_3UInrLYb8aH_8_6A_caIXA0u7r1oiwiHgXF7BmpoQOsNQLz3UIpc'
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
