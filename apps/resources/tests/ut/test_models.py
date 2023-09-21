@@ -20,4 +20,6 @@ class TestTagModel(TestCase):
 
     # new comment
 
+    # test 1 2 3
+
     # TODO: Test all models
