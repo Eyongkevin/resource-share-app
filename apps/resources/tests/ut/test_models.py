@@ -18,4 +18,6 @@ class TestTagModel(TestCase):
         # str(self.tag) or self.tag.__str__()
         self.assertEqual(str(self.tag), self.tag_name)
 
+    # new comment
+
     # TODO: Test all models
