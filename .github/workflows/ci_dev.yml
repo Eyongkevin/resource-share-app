@@ -11,6 +11,8 @@ on:
   pull_request:
     branches: ["dev"]
 
+env: ${{ secrets }}
+env: ${{ vars }}
 jobs:
   build: # job id
     runs-on: ubuntu-latest # The OS to build your project on
