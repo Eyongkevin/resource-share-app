@@ -4,7 +4,7 @@ import environ
 env = environ.Env()
 environ.Env.read_env(str(BASE_DIR / ".env"))
 
-SECRET_KEY = env.str("SECRET_KEY")
+SECRET_KEY = 'django-insecure-5fyJF16SHIub_Q_3UInrLYb8aH_8_6A_caIXA0u7r1oiwiHgXF7BmpoQOsNQLz3UIpc'
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
@@ -15,10 +15,10 @@ DEBUG = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env.str("DB_NAME"),
-        "USER": env.str("DB_USER"),
-        "PASSWORD": env.str("DB_PWD"),
-        "HOST": env.str("DB_HOST"),
-        "PORT": env.int("DB_PORT"),
+        "NAME": 'resourceshare',
+        "USER": 'postgres',
+        "PASSWORD": 'postgres',
+        "HOST": 'localhost',
+        "PORT": 5432,
     }
 }
