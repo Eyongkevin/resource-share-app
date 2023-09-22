@@ -8,14 +8,20 @@ name: Django Test
 on:
   push:
     branches: ["dev"]
-  pull_request:
+  pull_request_target: # To be able to access the secrets
     branches: ["dev"]
+    types: [opened] # run workflow only for opened pull requests.
+    paths: # run workflow only when .py files are modified
+      - "**.py"
+
+env: ${{ secrets }}
 
 jobs:
   build: # job id
     runs-on: ubuntu-latest # The OS to build your project on
     strategy:
       fail-fast: false
+      max-parallel: 4
       matrix:
         python-version: ["3.11"] # Python version to build the applciation
 
@@ -33,15 +39,15 @@ jobs:
       postgres_main:
         image: postgres:15
         env:
-          POSTGRES_USER: ${{ env.DB_USER }}
-          POSTGRES_PASSWORD: ${{ env.DB_PWD }}
-          POSTGRES_DB: ${{ env.DB_NAME }}
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PWD }}
+          POSTGRES_DB: ${{ secrets.DB_NAME }}
         ports:
           - 5432:5432
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-retries 4
+        # options: >-
+        #   --health-cmd pg_isready
+        #   --health-interval 10s
+        #   --health-retries 4
 
     steps: # Actions
       - uses: actions/checkout@v3 # pre-build in Github
