@@ -108,7 +108,11 @@ class TestResourcesView(TestCase):
         # check if the status code of response is 302
         self.assertEqual(response.status_code, 200)
 
-    def test_resource_detail_view_session(self):
+    
+    def test_resource_detail_view_session(self): 
+        '''
+        This method tests a session using using Request Factory.
+        '''
         # ARRANGE
         expected_result = [[self.resource.id, self.resource.title]]
         url = reverse("resource-detail", kwargs={"id": self.resource.id})
