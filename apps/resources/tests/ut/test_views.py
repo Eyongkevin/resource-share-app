@@ -1,6 +1,7 @@
 from django.test import TestCase, Client, RequestFactory
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 from apps.user.models import User
 from apps.resources import models, views
 
@@ -84,17 +85,21 @@ class TestResourcesView(TestCase):
         pass
 
     def test_resource_detail_view_redirects_to_login_for_non_auth_user(self):
+        # Arrange
+        expected_url = f"{reverse('login-view')}?next=/resource/{self.resource.id}"
         response = self.client.get(
-            reverse("resource-detail", kwargs={"id": 1}),
+            reverse("resource-detail", kwargs={"id": self.resource.id}),
             HTTP_USER_AGENT="Mozilla/5.0",  # set the user agent
             HTTP_CONTENT_TYPE="text/plain",  # set content type
         )
 
         # Assert
         # check if the response object is an instance of HttpResponseRedirect
+        self.assertIsInstance(response, HttpResponseRedirect)
         # check if the status code of response is 302
         self.assertEqual(response.status_code, 302)
         # Check if the url path is equal to 'user/login/?next=/resource/1'
+        self.assertURLEqual(response.url, expected_url)
 
     def test_resource_detail_view_status_code_ok_for_auth_user(self):
         # ARRANGE
@@ -108,11 +113,10 @@ class TestResourcesView(TestCase):
         # check if the status code of response is 302
         self.assertEqual(response.status_code, 200)
 
-    
-    def test_resource_detail_view_session(self): 
-        '''
+    def test_resource_detail_view_session(self):
+        """
         This method tests a session using using Request Factory.
-        '''
+        """
         # ARRANGE
         expected_result = [[self.resource.id, self.resource.title]]
         url = reverse("resource-detail", kwargs={"id": self.resource.id})
