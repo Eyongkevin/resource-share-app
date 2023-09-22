@@ -10,7 +10,9 @@ on:
     branches: ["dev"]
   pull_request_target: # To be able to access the secrets
     branches: ["dev"]
-    types: [opened]
+    types: [opened] # run workflow only for opened pull requests.
+    paths: # run workflow only when .py files are modified
+      - "**.py"
 
 env: ${{ secrets }}
 

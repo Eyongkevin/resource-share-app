@@ -1,13 +1,15 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, RequestFactory
+from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse
 from apps.user.models import User
-from apps.resources import models
+from apps.resources import models, views
 
 
 # Test Case # Test<view-name>View
 class TestResourcesView(TestCase):
     def setUp(self) -> None:
         self.client = Client()
+        self.factory = RequestFactory()
         # TODO: CREATE A USER
         self.user = User.objects.create_user(  # .create_user
             username="kenz",
@@ -37,6 +39,7 @@ class TestResourcesView(TestCase):
         # save it, so that the changes are recorded in the database
         self.resource.save()
 
+    # =============== CLIENT ========================
     # unit test 1
     def test_home_page_return_200_status(self):
         response = self.client.get(
@@ -71,6 +74,7 @@ class TestResourcesView(TestCase):
             HTTP_USER_AGENT="Mozilla/5.0",  # set the user agent
             HTTP_CONTENT_TYPE="text/plain",  # set content type
         )
+        request = self.factory.get(reverse("home-page"))
 
         # Assert
         self.assertEqual(response.context["cnt"], expected_resource_count)
@@ -94,7 +98,7 @@ class TestResourcesView(TestCase):
 
     def test_resource_detail_view_status_code_ok_for_auth_user(self):
         # ARRANGE
-        login = self.client.login(username="kenz", password="test@2023password")
+        self.client.login(username="kenz", password="test@2023password")
 
         response = self.client.get(
             reverse("resource-detail", kwargs={"id": self.resource.id}),
@@ -103,6 +107,19 @@ class TestResourcesView(TestCase):
         )
         # check if the status code of response is 302
         self.assertEqual(response.status_code, 200)
+
+    def test_resource_detail_view_session(self):
+        # ARRANGE
+        expected_result = [[self.resource.id, self.resource.title]]
+        url = reverse("resource-detail", kwargs={"id": self.resource.id})
+        middleware = SessionMiddleware(get_response=views.resource_detail)
+        request = self.factory.get(url)
+        request.user = self.user
+
+        middleware.process_request(request)
+        request.session.save()
+        views.resource_detail(request, self.resource.id)
+        self.assertEqual(request.session["viewed_resources"], expected_result)
 
 
 # TODO: Test the User view

@@ -2,6 +2,7 @@ from typing import Optional
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from .models import User
 
 
@@ -56,5 +57,6 @@ def login_view(request):
     return render(request, "user/login.html", context)
 
 
+@login_required
 def profile(request):
     return render(request, "user/profile.html")
