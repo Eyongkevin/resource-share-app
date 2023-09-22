@@ -14,7 +14,7 @@ on:
     paths: # run workflow only when .py files are modified
       - "**.py"
 
-# env: ${{ secrets }}
+env: ${{ secrets }}
 
 jobs:
   build: # job id
