@@ -118,7 +118,9 @@ class TestResourcesView(TestCase):
 
         middleware.process_request(request)
         request.session.save()
+        # ACT
         views.resource_detail(request, self.resource.id)
+        # ASSERT
         self.assertEqual(request.session["viewed_resources"], expected_result)
 
 
