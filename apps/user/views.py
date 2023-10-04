@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .models import User
+from rest_framework.generics import UpdateAPIView
+from . import serializers
 
 
 # Create your views here.
@@ -60,3 +62,9 @@ def login_view(request):
 @login_required
 def profile(request):
     return render(request, "user/profile.html")
+
+
+class UpdateUser(UpdateAPIView):
+    lookup_field = "id"
+    queryset = User.objects.all()
+    serializer_class = serializers.UserModelSerializer
