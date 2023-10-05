@@ -3,12 +3,17 @@ from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, DestroyAPIView
 from rest_framework.views import APIView
 from rest_framework import viewsets
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
+from rest_framework.decorators import authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from .models import Resources, Category
-from . import serializers
+from .serializers import serializers
 from . import mixins
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
+# @authentication_classes([TokenAuthentication])
 def list_resources(request):
     queryset = (
         Resources.objects.select_related("user_id", "cat_id")
@@ -53,6 +58,8 @@ def list_category(request):
 
 
 class ListResource(ListAPIView):
+    authentication_classes = (BasicAuthentication,)
+    permission_classes = (IsAuthenticated,)
     queryset = (
         Resources.objects.select_related("user_id", "cat_id")
         .prefetch_related("tags")
