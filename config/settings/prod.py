@@ -14,9 +14,15 @@ environ.Env.read_env(str(BASE_DIR / ".env.prod"))
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG")  # asserts may not load.
 
-ALLOWED_HOSTS = ["*"]  # .takeovertheworld.com
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "resource-share-app-production.up.railway.app",
+]  # .takeovertheworld.com
 
-# CSRF_TRUSTED_ORIGINS = ["http://mtt.local:8000"]  # https://takeovertheworld.com
+CSRF_TRUSTED_ORIGINS = [
+    "https://resource-share-app-production.up.railway.app"
+]  # https://takeovertheworld.com
 
 # -- Redirect all HTTP calls to HTTPS
 SECURE_SSL_REDIRECT = False
