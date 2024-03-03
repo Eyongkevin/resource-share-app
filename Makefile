@@ -51,5 +51,11 @@ prod-migrate:
 prod-makemigrations:
 	python manage.py makemigrations --settings=config.settings.prod
 
-prod-gunicorn:
+prod-gunicorn2:
 	gunicorn --env DJANGO_SETTINGS_MODULE=config.settings.prod -c config/prod/gunicorn/prod.py
+
+prod-gunicorn:
+	gunicorn config.wsgi --env DJANGO_SETTINGS_MODULE=config.settings.prod
+
+prod-showmigrations:
+	python manage.py showmigrations --settings=config.settings.prod
