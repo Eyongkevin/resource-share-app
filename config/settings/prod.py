@@ -55,7 +55,7 @@ DATABASES = {
 
 MIDDLEWARE += [
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "apps.core.middleware.handle_contentType.HandleContentTypeMiddleware",
+    # "apps.core.middleware.handle_contentType.HandleContentTypeMiddleware",
 ]
 
 
