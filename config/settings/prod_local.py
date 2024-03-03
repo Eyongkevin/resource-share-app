@@ -9,7 +9,7 @@ mimetypes.add_type("text/javascript", ".js", True)
 
 env = environ.Env(DEBUG=(bool, True))
 
-environ.Env.read_env(str(BASE_DIR / ".env.prod"))
+environ.Env.read_env(str(BASE_DIR / ".env.prod.local"))
 
 SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = env.bool("DEBUG")  # asserts may not load.

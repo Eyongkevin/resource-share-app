@@ -43,4 +43,10 @@ prod-install:
 	pip install -r requirements/prod.txt
 
 prod-collectstatic:
-	python manage.py collectstatic --settings=config.settings.prod_local
+	python manage.py collectstatic --settings=config.settings.prod
+
+prod-migrate:
+	python manage.py migrate --settings=config.settings.prod
+
+prod-makemigrations:
+	python manage.py makemigrations --settings=config.settings.prod
