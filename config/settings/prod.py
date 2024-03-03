@@ -1,11 +1,12 @@
 import environ
-import mimetypes
+
+# import mimetypes
 from .base import *
 
 ADMINS = (("Eyong Kevin", "tonyparkerkenz@gmail.com"),)
 
-mimetypes.add_type("text/css", ".css", True)
-mimetypes.add_type("text/javascript", ".js", True)
+# mimetypes.add_type("text/css", ".css", True)
+# mimetypes.add_type("text/javascript", ".js", True)
 
 env = environ.Env(DEBUG=(bool, False))
 
@@ -24,14 +25,14 @@ CSRF_TRUSTED_ORIGINS = [
     "https://resource-share-app-production.up.railway.app"
 ]  # https://takeovertheworld.com
 
-# -- Redirect all HTTP calls to HTTPS
-SECURE_SSL_REDIRECT = False
+# # -- Redirect all HTTP calls to HTTPS
+# SECURE_SSL_REDIRECT = False
 
-# -- Instructs the browser to only send cookies over https connection.
-SESSION_COOKIE_SECURE = False
+# # -- Instructs the browser to only send cookies over https connection.
+# SESSION_COOKIE_SECURE = False
 
-# -- Enable csrf protection to reject any post coming from http connection.
-CSRF_COOKIE_SECURE = False
+# # -- Enable csrf protection to reject any post coming from http connection.
+# CSRF_COOKIE_SECURE = False
 
 DATABASES = {
     "default": {
@@ -67,5 +68,5 @@ import dj_database_url
 DATABASE_URL = env.str("DATABASE_URL")
 
 DATABASES = {
-    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
+    "default": dj_database_url.config(default=DATABASE_URL)  # , conn_max_age=1800),
 }
