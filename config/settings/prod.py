@@ -53,7 +53,10 @@ DATABASES = {
 
 # SECURE_SSL_REDIRECT = False
 
-MIDDLEWARE += ["whitenoise.middleware.WhiteNoiseMiddleware"]
+MIDDLEWARE += [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "apps.core.middleware.handle_contentType.HandleContentTypeMiddleware",
+]
 
 
 STATIC_ROOT = str(BASE_DIR.joinpath("staticfiles"))

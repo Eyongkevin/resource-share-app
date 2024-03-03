@@ -31,6 +31,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "apps.core.middleware.log.simple_logging_middleware",
+    # "apps.core.middleware.handle_contentType.HandleContentTypeMiddleware",
     # replace with ViewExecutionTime2Middleware
     # "apps.core.middleware.logging.ViewExecutionTime2Middleware",
 ]
